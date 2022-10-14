@@ -14,7 +14,8 @@ class TalanaKombat(object):
     def __init__(self):
         player1_name = "Tonyn Stallone"
         player2_name = "Arnaldor Shuatseneguer"
-        self.players = [Player(player1_name), Player(player2_name)]
+        self.players = [Player(player1_name),
+                        Player(player2_name, on_left_side=False)]
 
 
     def load_fight_json(self, filename: str):
