@@ -20,10 +20,10 @@ class TestRepository(unittest.TestCase):
         expected_p2_hit = "K"
         self.talanaKombat.load_fight_json(file_path)
 
-        self.assertEqual(expected_p1_mov, self.talanaKombat.players[0].movements_list[0])
-        self.assertEqual(expected_p1_hit, self.talanaKombat.players[0].hits_list[0])
-        self.assertEqual(expected_p2_mov, self.talanaKombat.players[1].movements_list[0])
-        self.assertEqual(expected_p2_hit, self.talanaKombat.players[1].hits_list[0])
+        self.assertEqual(expected_p1_mov, self.talanaKombat.players[0].movements[0])
+        self.assertEqual(expected_p1_hit, self.talanaKombat.players[0].hits[0])
+        self.assertEqual(expected_p2_mov, self.talanaKombat.players[1].movements[0])
+        self.assertEqual(expected_p2_hit, self.talanaKombat.players[1].hits[0])
 
 
 
