@@ -13,8 +13,31 @@ class Player:
 
 
     def count_combinations(self):
+        # TODO: Ask if P or K alone is considered an combination.
+        #       Now assume no.
         counter = 0
         for round in range(len(self.pressed_moves)):
-            pass
+            if (self.pressed_moves[round] == "" or
+                self.pressed_attacks[round] == ""):
+                continue
+            counter += 1
         return counter
-            
+
+
+    def _count_non_empty(self, key_list: list) -> int:
+        counter = 0
+        for round in range(len(key_list)):
+            if key_list[round] == "":
+                continue
+            counter += 1
+        return counter
+
+
+    def count_movements(self):
+        return self._count_non_empty(self.pressed_moves)
+
+    
+    def count_attacks(self):
+        return self._count_non_empty(self.pressed_attacks)
+
+
