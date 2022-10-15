@@ -6,7 +6,7 @@ import unittest
 from src.talanaKombat import TalanaKombat
 
 #@unittest.skip
-class TestLoadJSON(unittest.TestCase):
+class TestTalanaKombat(unittest.TestCase):
     def setUp(self):
         self.tk = TalanaKombat()
 
@@ -36,7 +36,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_count_combinations(self):
-        figh_case = "test/fight_case3.json"
+        figh_case = "test/cases/fight_case3.json"
         expected = 3
 
         self.tk.load_pressed_keys_json(figh_case)
@@ -48,7 +48,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_count_movements(self):
-        figh_case = "test/fight_case3.json"
+        figh_case = "test/cases/fight_case3.json"
         expected = 2
 
         self.tk.load_pressed_keys_json(figh_case)
@@ -60,7 +60,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_count_attacks(self):
-        figh_case = "test/fight_case3.json"
+        figh_case = "test/cases/fight_case3.json"
         expected = 5
 
         self.tk.load_pressed_keys_json(figh_case)
@@ -72,7 +72,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_first_player_less_combos(self):
-        figh_case = "test/order_case1.json"
+        figh_case = "test/cases/order_case1.json"
         expected_name = "Arnaldor Shuatseneguer"
         expected_combos = 1
         self.tk.load_pressed_keys_json(figh_case)
@@ -85,7 +85,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_first_player_less_pressed_keys_with_empty(self):
-        figh_case = "test/order_case2.json"
+        figh_case = "test/cases/order_case2.json"
         expected = "Arnaldor Shuatseneguer"
         self.tk.load_pressed_keys_json(figh_case)
         first_player_name = self.tk.get_sorted_player_list()[0].name
@@ -95,7 +95,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_first_player_less_movements(self):
-        figh_case = "test/order_case3.json"
+        figh_case = "test/cases/order_case3.json"
         expected_name = "Tonyn Stallone"
         expected_count = 4
         self.tk.load_pressed_keys_json(figh_case)
@@ -108,7 +108,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_first_player_less_attacks(self):
-        figh_case = "test/order_case4.json"
+        figh_case = "test/cases/order_case4.json"
         expected_name = "Arnaldor Shuatseneguer"
         expected_count = 3
         self.tk.load_pressed_keys_json(figh_case)
@@ -121,18 +121,11 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_first_player_all_equal(self):
-        figh_case = "test/order_case5.json"
+        figh_case = "test/cases/order_case5.json"
         expected = "Tonyn Stallone"
         self.tk.load_pressed_keys_json(figh_case)
         first_player_name = self.tk.get_sorted_player_list()[0].name
 
         self.assertEqual(expected, first_player_name)
-
-
-
-
-
-
-
 
 

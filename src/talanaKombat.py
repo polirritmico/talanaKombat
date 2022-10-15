@@ -7,6 +7,7 @@ import os
 import json
 
 from src.player import Player
+from src.narration import Narration
 from config import Players_combo_collection
 from config import Players_names
 
@@ -19,6 +20,8 @@ class TalanaKombat():
                         Player(Players_names[1], on_left_side=False)]
         self.players[0].combos_collection = Players_combo_collection[0]
         self.players[1].combos_collection = Players_combo_collection[1]
+        # Set narrator
+        self.narrator = Narration(self.players)
 
 
     def load_pressed_keys_json(self, filename: str):
@@ -35,7 +38,7 @@ class TalanaKombat():
         self.players[1].pressed_attacks = keylog.get("player2").get("golpes")
 
 
-    def _sorted_by_less(self, p1_count, p2_count):
+    def _sort_less_count(self, p1_count, p2_count):
         if p1_count < p2_count:
             return [self.players[0], self.players[1]]
         if p1_count > p2_count:
@@ -45,17 +48,17 @@ class TalanaKombat():
 
     def get_sorted_player_list(self) -> list[Player]:
         # First player is the one with less <movements + hits>
-        ordered_list = self._sorted_by_less(self.players[0].count_combos(),
+        ordered_list = self._sort_less_count(self.players[0].count_combos(),
                                             self.players[1].count_combos())
         if ordered_list != None:
             return ordered_list
         # If equal, first the one with less moves
-        ordered_list = self._sorted_by_less(self.players[0].count_movements(),
+        ordered_list = self._sort_less_count(self.players[0].count_movements(),
                                             self.players[1].count_movements())
         if ordered_list != None:
             return ordered_list
         # If equal, first the one with less attacks
-        ordered_list = self._sorted_by_less(self.players[0].count_attacks(),
+        ordered_list = self._sort_less_count(self.players[0].count_attacks(),
                                             self.players[1].count_attacks())
         if ordered_list != None:
             return ordered_list

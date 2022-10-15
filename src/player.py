@@ -12,6 +12,12 @@ class Player:
         self.pressed_moves = []
 
 
+    def parse_pressed_keys(self, keys):
+        pass
+
+
+
+
     def count_combos(self):
         # TODO: Ask if P or K alone is considered an combination.
         #       Now assume no.

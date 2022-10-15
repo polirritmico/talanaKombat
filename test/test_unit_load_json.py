@@ -12,7 +12,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_load_json_input1(self):
-        file_path = "test/input_test1.json"
+        file_path = "test/cases/input_test1.json"
         expected_p1_mov = "W"
         expected_p1_hit = "P"
         expected_p2_mov = "D"
@@ -27,7 +27,7 @@ class TestLoadJSON(unittest.TestCase):
 
 
     def test_load_json_input2(self):
-        file_path = "test/input_test2.json"
+        file_path = "test/cases/input_test2.json"
         expected_p1_mov = "A"
         expected_p1_hit = ""
         expected_p2_mov = "S"
@@ -43,7 +43,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_load_json_fight_case1(self):
-        file_path = "test/fight_case1.json"
+        file_path = "test/cases/fight_case1.json"
         expected_p1_mov = ["D", "DSD", "S", "DSD", "SD"]
         expected_p1_hit = ["K", "P", "", "K", "P"]
         expected_p2_mov = ["SA", "SA", "SA", "ASA", "SA"]
@@ -59,7 +59,7 @@ class TestLoadJSON(unittest.TestCase):
 
     #@unittest.skip
     def test_load_json_fight_case2(self):
-        file_path = "test/fight_case2.json"
+        file_path = "test/cases/fight_case2.json"
         expected_p1_mov = ["SDD", "DSD", "SA", "DSD"]
         expected_p1_hit = ["K", "P", "K", "P"]
         expected_p2_mov = ["DSD", "WSAW", "ASA", "", "ASA", "SA"]
