@@ -15,6 +15,7 @@ class TestLoadJSON(unittest.TestCase):
     def test_players_on_two_sides(self):
         left = self.tk.players[0].left_side
         right = self.tk.players[1].left_side
+
         self.assertTrue(left)
         self.assertFalse(right)
 
@@ -27,10 +28,78 @@ class TestLoadJSON(unittest.TestCase):
         expected_comb_hit = "P"
         player_combo = self.tk.players[0].combos_collection[0]
 
-
         self.assertEqual(expected_name, player_combo.name)
         self.assertEqual(expected_power, player_combo.power)
         self.assertEqual(expected_comb_mov, player_combo.key_combination[0])
         self.assertEqual(expected_comb_hit, player_combo.key_combination[1])
+
+
+    #@unittest.skip
+    def test_count_combinations(self):
+        figh_case = "test/fight_case3.json"
+        expected = 5
+
+        self.tk.load_pressed_keys_json(figh_case)
+        player = self.tk.players[1]
+        output = player.count_combinations()
+
+        self.assertEqual(expected, output)
+
+
+    @unittest.skip
+    def test_first_player_less_pressed_keys(self):
+        figh_case = "test/order_case_1.json"
+        expected = "Arnaldor Shuatseneguer"
+        self.tk.load_pressed_keys_json(figh_case)
+        first_player_name = self.tk.get_ordered_player_list()[0].name
+
+        self.assertEqual(expected, first_player_name)
+
+
+    @unittest.skip
+    def test_first_player_less_pressed_keys_with_empty(self):
+        figh_case = "test/"
+        expected = "Arnaldor Shuatseneguer"
+        self.tk.load_pressed_keys_json(figh_case)
+        first_player_name = self.tk.get_ordered_player_list()[0].name
+
+        self.assertEqual(expected, first_player_name)
+
+
+    @unittest.skip
+    def test_first_player_less_movements(self):
+        figh_case = "test/"
+        expected = "Arnaldor Shuatseneguer"
+        self.tk.load_pressed_keys_json(figh_case)
+        first_player_name = self.tk.get_ordered_player_list()[0].name
+
+        self.assertEqual(expected, first_player_name)
+
+
+    @unittest.skip
+    def test_first_player_less_attacks(self):
+        figh_case = "test/"
+        expected = "Arnaldor Shuatseneguer"
+        self.tk.load_pressed_keys_json(figh_case)
+        first_player_name = self.tk.get_ordered_player_list()[0].name
+
+        self.assertEqual(expected, first_player_name)
+
+
+    @unittest.skip
+    def test_first_player_all_equal(self):
+        figh_case = "test/"
+        expected = "Arnaldor Shuatseneguer"
+        self.tk.load_pressed_keys_json(figh_case)
+        first_player_name = self.tk.get_ordered_player_list()[0].name
+
+        self.assertEqual(expected, first_player_name)
+
+
+
+
+
+
+
 
 

@@ -11,3 +11,10 @@ class Player:
         self.pressed_attacks = []
         self.pressed_moves = []
 
+
+    def count_combinations(self):
+        counter = 0
+        for round in range(len(self.pressed_moves)):
+            pass
+        return counter
+            
