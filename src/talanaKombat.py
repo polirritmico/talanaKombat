@@ -35,38 +35,36 @@ class TalanaKombat():
         self.players[1].pressed_attacks = keylog.get("player2").get("golpes")
 
 
-    def get_ordered_player_list(self) -> list[Player]:
+    def _sorted_by_less(self, p1_count, p2_count):
+        if p1_count < p2_count:
+            return [self.players[0], self.players[1]]
+        if p1_count > p2_count:
+            return [self.players[1], self.players[0]]
+        return None
+
+
+    def get_sorted_player_list(self) -> list[Player]:
         # First player is the one with less <movements + hits>
-        players = self.players
-        p1_count = len(players[0].pressed_moves) + len(players[0].pressed_attacks)
-        p2_count = len(players[1].pressed_moves) + len(players[1].pressed_attacks)
-        if p1_count > p2_count:
-            return [players[0], players[1]]
-        if p1_count < p2_count:
-            return [players[1], players[0]]
-
+        ordered_list = self._sorted_by_less(self.players[0].count_combos(),
+                                            self.players[1].count_combos())
+        if ordered_list != None:
+            return ordered_list
         # If equal, first the one with less moves
-        p1_count = len(players[0].pressed_moves)
-        p2_count = len(players[1].pressed_moves)
-        if p1_count > p2_count:
-            return [players[0], players[1]]
-        if p1_count < p2_count:
-            return [players[1], players[0]]
-
+        ordered_list = self._sorted_by_less(self.players[0].count_movements(),
+                                            self.players[1].count_movements())
+        if ordered_list != None:
+            return ordered_list
         # If equal, first the one with less attacks
-        p1_count = len(players[0].pressed_attacks)
-        p2_count = len(players[1].pressed_attacks)
-        if p1_count > p2_count:
-            return [players[0], players[1]]
-        if p1_count < p2_count:
-            return [players[1], players[0]]
-
+        ordered_list = self._sorted_by_less(self.players[0].count_attacks(),
+                                            self.players[1].count_attacks())
+        if ordered_list != None:
+            return ordered_list
         # If equal, first player1
-        return [players[0], players[1]]
+        return [self.players[0], self.players[1]]
 
 
     def run(self):
-        players_in_round_order = self.get_ordered_player_list()
+        players_in_round_order = self.get_sorted_player_list()
         for player in players_in_round_order:
             print(player.name)
 
