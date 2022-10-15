@@ -6,31 +6,32 @@
 import os
 import json
 
+from config import Players_combo_collection
 from src.player import Player
 
 class TalanaKombat(object):
     players = []
 
     def __init__(self):
-        player1_name = "Tonyn Stallone"
-        player2_name = "Arnaldor Shuatseneguer"
-        self.players = [Player(player1_name),
-                        Player(player2_name, on_left_side=False)]
+        # Set players data
+        self.players = [Player("Tonyn Stallone"),
+                        Player("Arnaldor Shuatseneguer", on_left_side=False)]
+        self.players[0].combos_collection = Players_combo_collection[0]
+        self.players[1].combos_collection = Players_combo_collection[1]
 
 
-    def load_fight_json(self, filename: str):
+    def load_pressed_keys_json(self, filename: str):
         with open(filename, "r") as stream:
             try:
                 fight_file = json.load(stream)
             except json.JSONDecodeError as err:
                 print("ERROR: Bad JSON file: ")
                 raise err
-
         # Parse the json data
-        self.players[0].movements = fight_file.get("player1").get("movimientos")
-        self.players[1].movements = fight_file.get("player2").get("movimientos")
-        self.players[0].hits = fight_file.get("player1").get("golpes")
-        self.players[1].hits = fight_file.get("player2").get("golpes")
+        self.players[0].pressed_moves = fight_file.get("player1").get("movimientos")
+        self.players[1].pressed_moves = fight_file.get("player2").get("movimientos")
+        self.players[0].pressed_attacks = fight_file.get("player1").get("golpes")
+        self.players[1].pressed_attacks = fight_file.get("player2").get("golpes")
 
     
     def run(self, input):

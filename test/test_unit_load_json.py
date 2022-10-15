@@ -8,7 +8,7 @@ from src.talanaKombat import TalanaKombat
 #@unittest.skip
 class TestLoadJSON(unittest.TestCase):
     def setUp(self):
-        self.talanaKombat = TalanaKombat()
+        self.tk = TalanaKombat()
 
     #@unittest.skip
     def test_load_json_input1(self):
@@ -17,13 +17,13 @@ class TestLoadJSON(unittest.TestCase):
         expected_p1_hit = "P"
         expected_p2_mov = "D"
         expected_p2_hit = "K"
-        talanaKombat = TalanaKombat()
-        talanaKombat.load_fight_json(file_path)
+        tk = TalanaKombat()
+        tk.load_pressed_keys_json(file_path)
 
-        self.assertEqual(expected_p1_mov, talanaKombat.players[0].movements[0])
-        self.assertEqual(expected_p1_hit, talanaKombat.players[0].hits[0])
-        self.assertEqual(expected_p2_mov, talanaKombat.players[1].movements[0])
-        self.assertEqual(expected_p2_hit, talanaKombat.players[1].hits[0])
+        self.assertEqual(expected_p1_mov, tk.players[0].pressed_moves[0])
+        self.assertEqual(expected_p1_hit, tk.players[0].pressed_attacks[0])
+        self.assertEqual(expected_p2_mov, tk.players[1].pressed_moves[0])
+        self.assertEqual(expected_p2_hit, tk.players[1].pressed_attacks[0])
 
 
     def test_load_json_input2(self):
@@ -32,13 +32,13 @@ class TestLoadJSON(unittest.TestCase):
         expected_p1_hit = ""
         expected_p2_mov = "S"
         expected_p2_hit = "P"
-        talanaKombat = TalanaKombat()
-        talanaKombat.load_fight_json(file_path)
+        tk = TalanaKombat()
+        tk.load_pressed_keys_json(file_path)
 
-        self.assertEqual(expected_p1_mov, talanaKombat.players[0].movements[0])
-        self.assertEqual(expected_p1_hit, talanaKombat.players[0].hits[0])
-        self.assertEqual(expected_p2_mov, talanaKombat.players[1].movements[0])
-        self.assertEqual(expected_p2_hit, talanaKombat.players[1].hits[0])
+        self.assertEqual(expected_p1_mov, tk.players[0].pressed_moves[0])
+        self.assertEqual(expected_p1_hit, tk.players[0].pressed_attacks[0])
+        self.assertEqual(expected_p2_mov, tk.players[1].pressed_moves[0])
+        self.assertEqual(expected_p2_hit, tk.players[1].pressed_attacks[0])
 
 
     #@unittest.skip
@@ -48,13 +48,13 @@ class TestLoadJSON(unittest.TestCase):
         expected_p1_hit = ["K", "P", "", "K", "P"]
         expected_p2_mov = ["SA", "SA", "SA", "ASA", "SA"]
         expected_p2_hit = ["K", "", "K", "P", "P"]
-        talanaKombat = TalanaKombat()
-        talanaKombat.load_fight_json(file_path)
+        tk = TalanaKombat()
+        tk.load_pressed_keys_json(file_path)
 
-        self.assertEqual(expected_p1_mov, talanaKombat.players[0].movements)
-        self.assertEqual(expected_p1_hit, talanaKombat.players[0].hits)
-        self.assertEqual(expected_p2_mov, talanaKombat.players[1].movements)
-        self.assertEqual(expected_p2_hit, talanaKombat.players[1].hits)
+        self.assertEqual(expected_p1_mov, tk.players[0].pressed_moves)
+        self.assertEqual(expected_p1_hit, tk.players[0].pressed_attacks)
+        self.assertEqual(expected_p2_mov, tk.players[1].pressed_moves)
+        self.assertEqual(expected_p2_hit, tk.players[1].pressed_attacks)
 
 
     #@unittest.skip
@@ -64,12 +64,12 @@ class TestLoadJSON(unittest.TestCase):
         expected_p1_hit = ["K", "P", "K", "P"]
         expected_p2_mov = ["DSD", "WSAW", "ASA", "", "ASA", "SA"]
         expected_p2_hit = ["P", "K", "K", "K", "P", "k"]
-        talanaKombat = TalanaKombat()
-        talanaKombat.load_fight_json(file_path)
+        tk = TalanaKombat()
+        tk.load_pressed_keys_json(file_path)
 
-        self.assertEqual(expected_p1_mov, talanaKombat.players[0].movements)
-        self.assertEqual(expected_p1_hit, talanaKombat.players[0].hits)
-        self.assertEqual(expected_p2_mov, talanaKombat.players[1].movements)
-        self.assertEqual(expected_p2_hit, talanaKombat.players[1].hits)
+        self.assertEqual(expected_p1_mov, tk.players[0].pressed_moves)
+        self.assertEqual(expected_p1_hit, tk.players[0].pressed_attacks)
+        self.assertEqual(expected_p2_mov, tk.players[1].pressed_moves)
+        self.assertEqual(expected_p2_hit, tk.players[1].pressed_attacks)
 
 
