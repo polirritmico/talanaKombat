@@ -9,7 +9,10 @@ if __name__ == "__main__":
     talanaKombat = TalanaKombat()
     filename = sys.argv[1] if len(sys.argv[1:]) == 1 else "test/fight_case3.json"
     try:
-        talanaKombat.load_pressed_keys_json(filename)
+        from src.combo import Combo
+        combo = Combo("Toasty", 12, "WSA", "P")
+        keys = "WSAP"
+        output = combo.check_pressed_keys(keys)
         sys.exit(talanaKombat.run())
     except Exception as err:
         print("Catched exception: \n  {}\nClosing TalanaKombat".format(err))
