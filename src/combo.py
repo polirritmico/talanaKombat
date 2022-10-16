@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 class Combo():
-    def __init__(self, name, power, mov_keys, attack_key):
+    def __init__(self, name: str, power: int, mov_keys: str, attack_key: str):
         self.name = name
         self.power = power
-        self.mov_keys = mov_keys
-        self.attack_key = attack_key
+        self.mov_keys = mov_keys.upper()
+        self.attack_key = attack_key.upper()
 
 
     def check_attack_key(self, key):
@@ -28,9 +28,9 @@ class Combo():
 
 
     def check_pressed_keys(self, move_keys, attack_key) -> bool:
-        if not self.check_attack_key(attack_key):
+        if not self.check_attack_key(attack_key.upper()):
             return False
-        if not self.check_mov_keys(move_keys):
+        if not self.check_mov_keys(move_keys.upper()):
             return False
         return True
 
