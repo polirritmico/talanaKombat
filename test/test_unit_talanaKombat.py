@@ -13,8 +13,8 @@ class TestTalanaKombat(unittest.TestCase):
 
     #@unittest.skip
     def test_players_on_two_sides(self):
-        left = self.tk.players[0].left_side
-        right = self.tk.players[1].left_side
+        left = self.tk.p1.left_side
+        right = self.tk.p2.left_side
 
         self.assertTrue(left)
         self.assertFalse(right)
@@ -26,7 +26,7 @@ class TestTalanaKombat(unittest.TestCase):
         expected_power = 3
         expected_comb_mov = "DSD"
         expected_comb_hit = "P"
-        player_combo = self.tk.players[0].combos_collection[0]
+        player_combo = self.tk.p1.combos_collection[0]
 
         self.assertEqual(expected_name, player_combo.name)
         self.assertEqual(expected_power, player_combo.power)
@@ -41,7 +41,7 @@ class TestTalanaKombat(unittest.TestCase):
         expected_combos = 1
         self.tk.load_pressed_keys_json(figh_case)
         first_player_name = self.tk.get_sorted_player_list()[0].name
-        first_player_combos = self.tk.players[1].count_combos()
+        first_player_combos = self.tk.p2.count_combos()
 
         self.assertEqual(expected_name, first_player_name)
         self.assertEqual(expected_combos, first_player_combos)
@@ -64,7 +64,7 @@ class TestTalanaKombat(unittest.TestCase):
         expected_count = 4
         self.tk.load_pressed_keys_json(figh_case)
         first_player_name = self.tk.get_sorted_player_list()[0].name
-        first_player_count = self.tk.players[0].count_movements()
+        first_player_count = self.tk.p1.count_movements()
 
         self.assertEqual(expected_name, first_player_name)
         self.assertEqual(expected_count, first_player_count)
@@ -77,7 +77,7 @@ class TestTalanaKombat(unittest.TestCase):
         expected_count = 3
         self.tk.load_pressed_keys_json(figh_case)
         first_player_name = self.tk.get_sorted_player_list()[0].name
-        first_player_count = self.tk.players[1].count_attacks()
+        first_player_count = self.tk.p2.count_attacks()
 
         self.assertEqual(expected_name, first_player_name)
         self.assertEqual(expected_count, first_player_count)
