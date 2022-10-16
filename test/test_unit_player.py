@@ -18,7 +18,7 @@ class TestTalanaKombat(unittest.TestCase):
         expected = 2
 
         self.tk.load_pressed_keys_json(figh_case)
-        player = self.tk.players[0]
+        player = self.tk.p1
         output = player.count_movements()
 
         self.assertEqual(expected, output)
@@ -30,7 +30,7 @@ class TestTalanaKombat(unittest.TestCase):
         expected = 5
 
         self.tk.load_pressed_keys_json(figh_case)
-        player = self.tk.players[1]
+        player = self.tk.p2
         output = player.count_attacks()
 
         self.assertEqual(expected, output)
@@ -42,9 +42,16 @@ class TestTalanaKombat(unittest.TestCase):
         expected = 3
 
         self.tk.load_pressed_keys_json(figh_case)
-        player = self.tk.players[1]
+        player = self.tk.p2
         output = player.count_combos()
 
         self.assertEqual(expected, output)
+
+
+    #@unittest.skip
+    def test_is_unconsciouts(self):
+        self.assertFalse(self.tk.p1.is_unconscious())
+        self.tk.p1.hp = 0
+        self.assertTrue(self.tk.p1.is_unconscious())
 
 

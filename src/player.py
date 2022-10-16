@@ -3,7 +3,7 @@
 
 class Player:
     def __init__(self, name: str="default_name",
-                       on_left_side: bool=True, hp: int=6):
+                       on_left_side: bool=False, hp: int=6):
         self.combos_collection = None
         self.hp = hp
         self.left_side = on_left_side
@@ -12,11 +12,21 @@ class Player:
         self.pressed_moves = []
 
 
-    #def parse_pressed_keys(self, keys):
-    #    for combo in self.combos_collection:
-    #        if not combo.check_pressed_keys:
-    #            continue
-    #        extra_keys = combo.get_extra_keys(keys)
+    def take_action(self, round) -> int:
+        damage = 0
+        key_attack = self.pressed_attacks[round]
+        keys_moves = self.pressed_moves[round]
+        for combo in self.combos_collection:
+            if not (combo.check_attack_key(key_attack) or
+                    combo.check_mov_keys(keys_moves)):
+                continue
+        return damage
+
+
+    def is_unconscious(self) -> bool:
+        if self.hp <= 0:
+            return True
+        return False
 
 
     def set_combos_collection(self, combos):
