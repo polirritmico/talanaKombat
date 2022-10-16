@@ -13,11 +13,26 @@ class TestPlayer(unittest.TestCase):
 
 
     #@unittest.skip
+    def test_take_action(self):
+        fight_case = "test/cases/fight_case1.json"
+        self.tk.load_pressed_keys_json(fight_case)
+
+        round = 1
+        expected = "Taladoken"
+        output = self.tk.p1.take_action(round, self.tk.p2)
+        self.assertEqual(expected, output)
+        round = 3
+        expected = "Remeyuken"
+        output = self.tk.p1.take_action(round, self.tk.p2)
+        self.assertEqual(expected, output)
+
+
+    #@unittest.skip
     def test_count_movements(self):
-        figh_case = "test/cases/fight_case3.json"
+        fight_case = "test/cases/fight_case3.json"
         expected = 2
 
-        self.tk.load_pressed_keys_json(figh_case)
+        self.tk.load_pressed_keys_json(fight_case)
         player = self.tk.p1
         output = player.count_movements()
 
@@ -26,10 +41,10 @@ class TestPlayer(unittest.TestCase):
 
     #@unittest.skip
     def test_count_attacks(self):
-        figh_case = "test/cases/fight_case3.json"
+        fight_case = "test/cases/fight_case3.json"
         expected = 5
 
-        self.tk.load_pressed_keys_json(figh_case)
+        self.tk.load_pressed_keys_json(fight_case)
         player = self.tk.p2
         output = player.count_attacks()
 
@@ -37,11 +52,11 @@ class TestPlayer(unittest.TestCase):
 
 
     #@unittest.skip
-    def test_count_combinations(self):
-        figh_case = "test/cases/fight_case3.json"
+    def test_count_combos(self):
+        fight_case = "test/cases/fight_case3.json"
         expected = 3
 
-        self.tk.load_pressed_keys_json(figh_case)
+        self.tk.load_pressed_keys_json(fight_case)
         player = self.tk.p2
         output = player.count_combos()
 

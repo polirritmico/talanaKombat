@@ -11,6 +11,7 @@ class TestCombo(unittest.TestCase):
     def setUp(self):
         self.combo = Combo("Toasty", 12, "ASA", "P")
 
+
     #@unittest.skip
     def test_check_attack_key(self):
         self.assertTrue(self.combo.check_attack_key("P"))

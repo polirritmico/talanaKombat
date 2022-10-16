@@ -69,19 +69,19 @@ class TalanaKombat():
         players_turn = self.get_sorted_player_list()
         first_player = players_turn[0]
         second_player = players_turn[1]
+
         for round in range(self.rounds):
-            self.round_action(round, first_player, second_player)
-            self.round_action(round, second_player, first_player)
-            if self.winner != None:
-                self.winner.end_combat()
+            first_player.take_action(round, second_player)
+            if second_player.is_unconscious():
+                self.winner = first_player.end_combat()
                 break
+            second_player.take_action(round, first_player)
+            if first_player.is_unconscious():
+                self.winner = second_player.end_combat()
+                break
+        if self.winner == None:
+            raise Exception("ERROR: Missing inputs. Check JSON")
+        return self.winner
 
-
-    def round_action(self, round, active_player, pasive_player):
-        damage = active_player.take_action(round)
-        if damage != 0:
-            active_player.damage(pasive_player)
-        if pasive_player.is_unconscious():
-            self.winner = active_player
 
 

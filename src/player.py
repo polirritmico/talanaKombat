@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#from src.narration import Narration
+
 class Player:
     def __init__(self, name: str="default_name",
                        on_left_side: bool=False, hp: int=6):
@@ -10,17 +12,43 @@ class Player:
         self.name = name
         self.pressed_attacks = []
         self.pressed_moves = []
+        #self.narrator = Narration(self, on_left_side)
 
 
-    def take_action(self, round) -> int:
-        damage = 0
+    def harm_target_player(self, damage, target_player):
+        target_player.hp -= damage
+        #target_player.narrator.take_damage()
+
+
+    def end_combat(self):
+        """ Return winner name """
+        #self.narrator.end_combat()
+        print("End combat\nWinner: {}".format(self.name))
+        return self.name
+
+
+    def take_action(self, round, target_player):
+        if round >= len(self.pressed_moves):
+            #self.narrator.nothing()
+            return
         key_attack = self.pressed_attacks[round]
         keys_moves = self.pressed_moves[round]
+
+        if key_attack == "" and keys_moves == "":
+            #self.narrator.nothing()
+            return "nothing"
+        if key_attack == "":
+            #self.narrator.move_only()
+            return "move_only"
         for combo in self.combos_collection:
-            if not (combo.check_attack_key(key_attack) or
+            if not (combo.check_attack_key(key_attack) and
                     combo.check_mov_keys(keys_moves)):
                 continue
-        return damage
+            extra_move_keys = combo.get_extra_move_keys(keys_moves)
+            self.harm_target_player(combo.power, target_player)
+            #self.narrator.hit(combo, extra_move_keys)
+            return combo.name
+        raise Exception("Unknown action...\nCheck JSON data")
 
 
     def is_unconscious(self) -> bool:
