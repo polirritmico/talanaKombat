@@ -27,19 +27,19 @@ class Combo():
         return True
 
 
-    def check_pressed_keys(self, keys) -> bool:
-        if not self.check_attack_key(keys[-1]):
+    def check_pressed_keys(self, move_keys, attack_key) -> bool:
+        if not self.check_attack_key(attack_key):
             return False
-        if not self.check_mov_keys(keys[:-1]):
+        if not self.check_mov_keys(move_keys):
             return False
         return True
 
 
-    def get_extra_keys(self, keys) -> str:
+    def get_extra_move_keys(self, pressed_move_keys) -> str:
         mov_keys_count = len(self.mov_keys)
-        keys_count = len(keys)
-        if keys_count == mov_keys_count:
+        pressed_keys_count = len(pressed_move_keys)
+        if pressed_keys_count == mov_keys_count:
             return ""
-        return keys[0:keys_count-mov_keys_count]
+        return pressed_move_keys[0:pressed_keys_count-mov_keys_count]
 
 

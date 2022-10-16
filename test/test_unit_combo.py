@@ -26,23 +26,25 @@ class TestTalanaKombat(unittest.TestCase):
     #@unittest.skip
     def test_parse_pressed_keys(self):
         self.combo.mov_keys = "WSA"
-        keys = "WSAP"
-        output = self.combo.check_pressed_keys(keys)
+        self.combo.attack_key = "K"
+        move_keys = "WSA"
+        attack_key = "K"
+        output = self.combo.check_pressed_keys(move_keys, attack_key)
         self.assertTrue(output)
 
 
     #@unittest.skip
-    def test_get_extra_keys(self):
+    def test_get_extra_move_keys(self):
         keys = "WAASA"
         expected = "WA"
-        output = self.combo.get_extra_keys(keys)
+        output = self.combo.get_extra_move_keys(keys)
         self.assertEqual(expected, output)
 
 
-    def test_get_extra_keys_no_extra(self):
+    def test_get_extra_move_keys_no_extra(self):
         keys = "ASA"
         expected = ""
-        output = self.combo.get_extra_keys(keys)
+        output = self.combo.get_extra_move_keys(keys)
         self.assertEqual(expected, output)
 
 
