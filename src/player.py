@@ -16,19 +16,19 @@ class Player:
 
 
     def harm_target_player(self, combo, target_player, extra_move_keys):
-        self.narrator.hit(combo, target_player, extra_move_keys)
+        self.narrator.attack(combo, target_player, extra_move_keys)
         damage = combo.power
         target_player.take_damage(damage)
 
 
     def take_damage(self, damage):
         self.hp -= damage
-        self.narrator.take_damage()
+        self.narrator.take_damage(damage)
 
-    def end_combat(self):
+
+    def end_combat(self, loser: str):
         """ Return winner name """
-        self.narrator.end_combat()
-        print("End combat\nWinner: {}".format(self.name))
+        self.narrator.end_combat(loser, self.hp)
         return self.name
 
 
@@ -43,7 +43,7 @@ class Player:
             self.narrator.nothing()
             return "nothing"
         if key_attack == "":
-            self.narrator.move_only()
+            self.narrator.move_only(target_player)
             return "move_only"
         for combo in self.combos_collection:
             if not (combo.check_attack_key(key_attack) and

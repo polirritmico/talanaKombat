@@ -15,7 +15,7 @@ if __name__ == "__main__":
     try:
         talanaKombat = TalanaKombat()
         talanaKombat.load_pressed_keys_json(filename)
-        talanaKombat.run()
+        talanaKombat.fight()
         sys.exit()
     except Exception:
         print("Catched exception: \n  {}".format(traceback.format_exc()))
