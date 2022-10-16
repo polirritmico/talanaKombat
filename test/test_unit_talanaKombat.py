@@ -30,20 +30,8 @@ class TestTalanaKombat(unittest.TestCase):
 
         self.assertEqual(expected_name, player_combo.name)
         self.assertEqual(expected_power, player_combo.power)
-        self.assertEqual(expected_comb_mov, player_combo.key_combination[0])
-        self.assertEqual(expected_comb_hit, player_combo.key_combination[1])
-
-
-    #@unittest.skip
-    def test_count_combinations(self):
-        figh_case = "test/cases/fight_case3.json"
-        expected = 3
-
-        self.tk.load_pressed_keys_json(figh_case)
-        player = self.tk.players[1]
-        output = player.count_combos()
-
-        self.assertEqual(expected, output)
+        self.assertEqual(expected_comb_mov, player_combo.mov_keys)
+        self.assertEqual(expected_comb_hit, player_combo.attack_key)
 
 
     #@unittest.skip
