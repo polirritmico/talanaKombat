@@ -18,8 +18,9 @@ class TalanaKombat():
         # Set players data
         self.players = [Player(Players_names[0]),
                         Player(Players_names[1], on_left_side=False)]
-        self.players[0].combos_collection = Players_combo_collection[0]
-        self.players[1].combos_collection = Players_combo_collection[1]
+        self.players[0].set_combos_collection(Players_combo_collection[0])
+        self.players[1].set_combos_collection(Players_combo_collection[1])
+
         # Set narrator
         self.narrator = Narration(self.players)
 
