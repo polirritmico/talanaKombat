@@ -105,7 +105,7 @@ class TestCompleteFights(unittest.TestCase):
         fight_case = "test/cases/fight_case1.json"
         expected_winner = "Arnaldor Shuatseneguer"
         self.tk.load_pressed_keys_json(fight_case)
-        output = self.tk.run()
+        output = self.tk.fight()
         self.assertEqual(expected_winner, output)
 
 
@@ -114,7 +114,7 @@ class TestCompleteFights(unittest.TestCase):
         fight_case = "test/cases/fight_case2.json"
         expected_winner = "Tonyn Stallone"
         self.tk.load_pressed_keys_json(fight_case)
-        output = self.tk.run()
+        output = self.tk.fight()
         self.assertEqual(expected_winner, output)
 
 
@@ -123,7 +123,7 @@ class TestCompleteFights(unittest.TestCase):
         fight_case = "test/cases/fight_case3.json"
         expected_winner = "Arnaldor Shuatseneguer"
         self.tk.load_pressed_keys_json(fight_case)
-        output = self.tk.run()
+        output = self.tk.fight()
         self.assertEqual(expected_winner, output)
 
 

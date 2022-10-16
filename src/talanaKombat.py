@@ -7,6 +7,7 @@ import os
 import json
 
 from src.player import Player
+from src.narration import Narration
 from config import Players_combo_collection
 from config import Players_names
 
@@ -65,11 +66,12 @@ class TalanaKombat():
         return None
 
 
-    def run(self):
+    def fight(self):
         players_turn = self.get_sorted_player_list()
         first_player = players_turn[0]
         second_player = players_turn[1]
 
+        Narration.greetings(first_player, second_player)
         for round in range(self.rounds):
             first_player.take_action(round, second_player)
             if second_player.is_unconscious():
@@ -84,4 +86,6 @@ class TalanaKombat():
         return self.winner
 
 
+    def run(self):
+        self.fight()
 

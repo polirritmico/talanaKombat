@@ -7,10 +7,11 @@ import traceback
 from src.talanaKombat import TalanaKombat
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Error: Check usage: ./talanaKombat.py FILENAME")
-        sys.exit()
-    filename = sys.argv[1]
+    # if len(sys.argv) != 2:
+    #     print("Error: Check usage: ./talanaKombat.py FILENAME")
+    #     sys.exit()
+    # filename = sys.argv[1]
+    filename = "test/cases/fight_case1.json"
     try:
         talanaKombat = TalanaKombat()
         talanaKombat.load_pressed_keys_json(filename)
