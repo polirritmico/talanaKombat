@@ -12,10 +12,16 @@ class Player:
         self.pressed_moves = []
 
 
-    def parse_pressed_keys(self, keys):
-        pass
+    #def parse_pressed_keys(self, keys):
+    #    for combo in self.combos_collection:
+    #        if not combo.check_pressed_keys:
+    #            continue
+    #        extra_keys = combo.get_extra_keys(keys)
 
 
+    def set_combos_collection(self, combos):
+        sort_by_len = lambda combo: len(combo.mov_keys)
+        self.combos_collection = sorted(combos, key=sort_by_len, reverse=True)
 
 
     def count_combos(self):
