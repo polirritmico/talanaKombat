@@ -7,7 +7,7 @@ from src.player import Player
 from src.talanaKombat import TalanaKombat
 
 #@unittest.skip
-class TestTalanaKombat(unittest.TestCase):
+class TestPlayer(unittest.TestCase):
     def setUp(self):
         self.tk = TalanaKombat()
 

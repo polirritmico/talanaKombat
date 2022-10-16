@@ -7,7 +7,7 @@ from src.combo import Combo
 from config import Players_combo_collection
 
 #@unittest.skip
-class TestTalanaKombat(unittest.TestCase):
+class TestCombo(unittest.TestCase):
     def setUp(self):
         self.combo = Combo("Toasty", 12, "ASA", "P")
 
