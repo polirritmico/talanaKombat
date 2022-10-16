@@ -20,7 +20,7 @@ foo@bar: ./talanaKombat.py ARCHIVO
 # ToDo:
 
 * [ ] Implementar narraciones
-* [ ] Implementar detección de combos, combo parser
+* [x] Implementar detección de combos, combo parser
 
 # Requerimientos:
 
@@ -65,15 +65,15 @@ Teclas P, K → Puño, Patada
     - Inicia J1
 - [x] Toda la secuencia de un jugador viene completa en un json
 - [x] Cada personaje tiene 6 puntos de energía
-- [ ] Un personaje muere cuando su energía es 0 y termina la pelea inmediatamente
+- [x] Un personaje muere cuando su energía es 0 y termina la pelea inmediatamente
 - [x] Tony, el player 1, siempre ataca hacia la derecha (no cambia de lado)
 - [x] Arnaldor, el player 2, siempre ataca hacia la izquierda (no cambia de lado)
-- [ ] Los personajes atacan 1 a la vez estilo JRPG por turnos hasta que uno es derrotado.
-- [ ] Los golpes no pueden ser bloqueados, siempre son efectivos
+- [x] Los personajes atacan 1 a la vez estilo JRPG por turnos hasta que uno es derrotado.
+- [x] Los golpes no pueden ser bloqueados, siempre son efectivos
 
 - [x] Los datos llegan como un json con botones de movimiento y golpe que se correlacionan para cada jugada
-- [ ] Los movimientos pueden ser un string de largo máx 5 (puede ser vacío)
-- [ ] Los golpes pueden ser un solo botón máx (puede ser vacío)
+- [x] Los movimientos pueden ser un string de largo máx 5 (puede ser vacío)
+- [x] Los golpes pueden ser un solo botón máx (puede ser vacío)
 - [x] Se asume que el botón de golpe es justo después de la secuencia de
   movimiento. Por ejemplo, `AADSD` + `P` es un _Taladoken_ (antes se movió a la
   izquierda 2 veces). `DSDAA` + `P` son movimientos más puño.
