@@ -1,6 +1,12 @@
 Talana Kombat JRPG
 ==================
 
+## Docker
+
+```command
+docker pull polirritmico/talana-kombat
+```
+
 ## Descripción
 
 Juego donde 2 personajes se enfrentan. Cada personaje tiene 2 golpes especiales
